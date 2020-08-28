@@ -10,4 +10,8 @@ public interface AssignService {
 	
 	public void createAssign(AssignDTO assignDTO);
 	
+	public AssignDTO getAssignById(int id_assign);
+	
+	public List<AssignDTO> getAssignByUser(String username);
+	
 }

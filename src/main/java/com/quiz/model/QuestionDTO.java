@@ -13,7 +13,7 @@ public class QuestionDTO {
 	
 	private int id_user;
 	private String username;
-	private String answer;
+	private int answer;
 	
 	
 	//khong can quan tam cau naof thuoc test nao
@@ -77,10 +77,10 @@ public class QuestionDTO {
 	public void setId_user(int id_user) {
 		this.id_user = id_user;
 	}
-	public String getAnswer() {
+	public int getAnswer() {
 		return answer;
 	}
-	public void setAnswer(String answer) {
+	public void setAnswer(int answer) {
 		this.answer = answer;
 	}
 	public String getUsername() {

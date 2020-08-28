@@ -35,6 +35,7 @@ public class AssignServiceImpl implements AssignService {
 			assignDTO.setEnd(assign.getEnd());
 			assignDTO.setScore(assign.getScore());
 			assignDTO.setId_user(assign.getUser().getId_user());
+			assignDTO.setUsername(assign.getUser().getUsername());
 			
 			assignDTOs.add(assignDTO);
 		}
@@ -55,8 +56,8 @@ public class AssignServiceImpl implements AssignService {
 		assign.setId_assign(assignDTO.getId_assign());
 		//assign.setResult(result);
 		assign.setTest(test);
-		assign.setStart(getCurrentTime());
-		assign.setEnd(getCurrentTime());
+		assign.setStart(assignDTO.getStart());
+		assign.setEnd(assignDTO.getEnd());
 		assign.setScore(assignDTO.getScore());
 		assign.setUser(user);
 		
@@ -71,5 +72,41 @@ public class AssignServiceImpl implements AssignService {
 	
 	public static Date getCurrentTime() {
 		return new Date();
+	}
+
+	@Override
+	public AssignDTO getAssignById(int id_assign) {
+		Assign assign = assignDAO.getAssignById(id_assign);
+		AssignDTO assignDTO = new AssignDTO();
+		assignDTO.setId_assign(assign.getId_assign());
+		//assignDTO.setId_result(assign.getResult().getId_result());
+		assignDTO.setId_test(assign.getTest().getId_test());
+		assignDTO.setStart(assign.getStart());
+		assignDTO.setEnd(assign.getEnd());
+		assignDTO.setScore(assign.getScore());
+		assignDTO.setId_user(assign.getUser().getId_user());
+		assignDTO.setUsername(assign.getUser().getUsername());
+		return assignDTO;
+	}
+
+	@Override
+	public List<AssignDTO> getAssignByUser(String username) {
+		List<AssignDTO> assignDTOs = new ArrayList<AssignDTO>();
+		for(Assign assign: assignDAO.getAssignByUser(username)) {
+			
+			AssignDTO assignDTO = new AssignDTO();
+			
+			assignDTO.setId_assign(assign.getId_assign());
+			//assignDTO.setId_result(assign.getResult().getId_result());
+			assignDTO.setId_test(assign.getTest().getId_test());
+			assignDTO.setStart(assign.getStart());
+			assignDTO.setEnd(assign.getEnd());
+			assignDTO.setScore(assign.getScore());
+			assignDTO.setId_user(assign.getUser().getId_user());
+			assignDTO.setUsername(assign.getUser().getUsername());
+			
+			assignDTOs.add(assignDTO);
+		}
+		return assignDTOs;
 	}
 }

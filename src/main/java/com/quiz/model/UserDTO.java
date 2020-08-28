@@ -17,11 +17,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserDTO {
 
+
+
 	private int id_user;
 	private String username;
 	private String password;
 	private int role;
 	private String role_name;
+	private String token;
 	
 	private List<Integer> questionIDList;
 	private List<Integer> testIDList;
@@ -30,6 +33,23 @@ public class UserDTO {
 	
 	private List<GrantedAuthority> authorities;
 
+	public UserDTO(int id_user, String username, String password, int role) {
+		this.id_user = id_user;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+	}
+
+	public UserDTO(int id_user, String username, String password, int role, String token) {
+		super();
+		this.id_user = id_user;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+		this.token = token;
+	}
+
+	
 
 
 	

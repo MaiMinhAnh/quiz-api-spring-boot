@@ -103,6 +103,27 @@ public class TestServiceImpl implements TestService{
 
 
 
+	@Override
+	public TestDTO getTestByName(String name) {
+		TestDTO testDTO = new TestDTO();
+		Test test = testDAO.getTestByName(name);
+		testDTO.setId_test(test.getId_test());
+		testDTO.setName(test.getName());
+		
+		List<Integer> questionIDList = new ArrayList<Integer>();
+		for(Question question: test.getQuestions()) {
+			questionIDList.add(question.getId_question());
+		}
+		
+		testDTO.setQuestionIDList(questionIDList);
+		testDTO.setId_user(test.getUser().getId_user());
+		//testDTO.setId_assign(test.getAssign().getId_assign());
+		
+		return testDTO;
+	}
+
+
+
 
 
 

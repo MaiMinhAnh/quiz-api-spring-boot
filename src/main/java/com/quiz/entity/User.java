@@ -64,17 +64,39 @@ public class User implements Serializable{
 	private List<Assign> assigns;
 	
 	
-//	public User(int id, String username, String password) {
-//		super();
-//		this.id_user = id;
-//		this.username = username;
-//		this.password = password;
-//	}
+	public User( String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+	
+	
 	
 	public List<GrantedAuthority> getAuthorities(){
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		authorities.add(new SimpleGrantedAuthority(role.getName()));
 		return authorities;
 	}
+
+
+
+	public User(int id_user, String username, String password, Role role, List<Question> questions, List<Test> tests,
+			List<Assign> assigns) {
+		super();
+		this.id_user = id_user;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+		this.questions = questions;
+		this.tests = tests;
+		this.assigns = assigns;
+	}
+
+
+
+	public User() {
+		
+	}
+	
+	
 	
 }

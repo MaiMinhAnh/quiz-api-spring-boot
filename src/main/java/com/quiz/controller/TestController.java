@@ -46,7 +46,10 @@ public class TestController {
 		testService.updateTest(testDTO, id);
 	}
 
-	
+	@GetMapping(value = "test/name/{name}")
+	public TestDTO getTestByName(@PathVariable("name") String name) {
+		return testService.getTestByName(name);
+	}
 	
 	
 	

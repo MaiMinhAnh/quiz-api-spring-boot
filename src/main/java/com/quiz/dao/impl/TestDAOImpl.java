@@ -54,6 +54,13 @@ public class TestDAOImpl implements TestDAO {
 		
 	}
 
+	@Override
+	public Test getTestByName(String name) {
+		Test test = (Test) entityManager.createQuery("select t from Test t where t.name like:testName")
+				.setParameter("testName", name).getSingleResult();
+	return test;
+	}
+
 
 
 

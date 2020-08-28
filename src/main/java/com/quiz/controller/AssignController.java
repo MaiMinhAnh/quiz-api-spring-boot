@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,8 +31,15 @@ public class AssignController {
 		assignService.createAssign(assignDTO);
 	}
 	
+	@GetMapping(value = "assign/{id_assign}")
+	public AssignDTO getAssignByID(@PathVariable("id_assign") Integer id_assign) {
+		return assignService.getAssignById(id_assign);
+	}
 	
-	
+	@GetMapping(value = "assign/user/{username}")
+	public List<AssignDTO> getAssignByUser(@PathVariable("username") String username){
+		return assignService.getAssignByUser(username);
+	}
 	
 	
 	

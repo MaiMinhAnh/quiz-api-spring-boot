@@ -24,6 +24,7 @@ public class AssignDTO {
 	private int id_test;
 	
 	private int id_user;
+	private String username;
 	private int id_result;
 	
 	

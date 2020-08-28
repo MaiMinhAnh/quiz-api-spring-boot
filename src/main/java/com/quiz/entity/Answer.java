@@ -26,7 +26,7 @@ public class Answer  implements Serializable{/**
 	private int id_answer;
 	
 	@Column(name = "answer")
-	private String answer;
+	private int answer;
 	
 	@OneToOne
 	@JoinColumn(name = "id_question")

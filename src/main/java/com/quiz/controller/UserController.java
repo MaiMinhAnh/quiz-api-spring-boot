@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.quiz.dao.UserDAO;
+
+
 import com.quiz.model.UserDTO;
 import com.quiz.service.JwtService;
 import com.quiz.service.UserService;
@@ -25,6 +28,12 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	UserDAO userDAO;
+	
+//	@Autowired
+//	private JwtTokenUtil jwtTokenUtil;
 	
 	@Autowired
 	private JwtService jwtService;
@@ -76,8 +85,20 @@ public class UserController {
 		return new ResponseEntity<String>(resultString, httpStatus);
 	}
 	
-	@GetMapping(value = "/user/name")
-	public void get(@RequestBody UserDTO userDTO) {
-		userService.loadUserByName(userDTO.getUsername());
+//	@PostMapping("/login")
+//	Object oneByUsernamePassword(@RequestBody User user) {
+//		User a = userDAO.loadUserByName(user.getUsername());
+//		//if (a != null) {
+//			final String token = jwtTokenUtil.generateToken(a);
+//			UserDTO adto = new UserDTO(a.getId_user(), a.getUsername(), a.getPassword(), a.getRole().getId_role(), token);
+//			return adto;
+//		
+//		
+//	}
+	@PostMapping(value = "/getUserByName")
+	public UserDTO getUserByName(@RequestBody UserDTO userDTO) {
+		return userService.loadUserByName(userDTO.getUsername());
 	}
+	
+	
 }

@@ -17,6 +17,7 @@ public interface TestService {
 	
 	public void updateTest(TestDTO testDTO ,int id_test);
 	
+	public TestDTO getTestByName(String name);
 
 	
 	

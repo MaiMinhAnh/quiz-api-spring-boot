@@ -10,4 +10,8 @@ public interface AssignDAO {
 	
 	public void createAssign(Assign assign);
 	
+	public Assign getAssignById(int id_assign);
+	
+	public List<Assign> getAssignByUser(String username);
+	
 }

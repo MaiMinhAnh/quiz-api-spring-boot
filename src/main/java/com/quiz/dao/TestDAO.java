@@ -19,5 +19,7 @@ public interface TestDAO {
 	
 	public void deleteTest(Test test);
 	
+	public Test getTestByName(String name);
+	
 	
 }
